@@ -3,7 +3,7 @@ lbs location base server用户体验
 计算距离
 向百度申请使用百度地图
 工具，东西做出来
-授权码：QdIv2usL18zQUjo3FbjAWRfUegMaOVrw
+授权码ak：QdIv2usL18zQUjo3FbjAWRfUegMaOVrw
 再引入百度 js sdk
 相对单位 vw,vh 移动开发 尺寸不一样相对大小设置
 前端的f12进入Chrome检查模式 console 移动端和pc端的切换下，机型切换一下
