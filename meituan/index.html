@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 100px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+  content="initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,width=device-width, height=device-height, user-scalable=no">
+    <title>Document</title>
+    <!-- sdk -->
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=QdIv2usL18zQUjo3FbjAWRfUegMaOVrw"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            /* css继承 */
+            font-size: 0.28rem;
+            line-height: 1.5;
+        }
+        img {
+            max-width: 100%;
+        }
+        #map {
+            width: 100vw;
+            height: 100vh;
+        }
+        .poi-item-wrapper{
+            background-color: #fff;
+            padding: 0.24rem 0 0 0.3rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .poi-item-wrapper .poi-info-wrapper {
+            display: flex;
+        }
+        .poi-item-wrapper .image-wrapper{
+            position: relative;
+            margin-top: 0.05rem;
+            width: 1.6rem;
+            height: 1.61rem;
+        }
+        .poi-info-wrapper .poi-info {
+            margin-left: 0.18rem;
+            flex: 1;
+        }
+        .poi-item-wrapper .poi-info .price-wrapper {
+            position: relative;
+            font-size: 0.24rem;
+            line-height: 0.33rem;
+            margin-top: 0.06rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            height: 2rem;
+        }
+        .poi-item-wrapper .poi-info .location {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 0.33rem;
+            line-height: 0.33rem;
+            font-size: 0.24rem;
+            font-family: PingFangSC-Regular;
+            color: #666666;
+            letter-spacing: 0.2px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- html+css -->
+    <!-- 附近商家 -->
+    <div class="shoplist">
+        <div class="poi-item-wrapper">
+            <div class="poi-info-wrapper">
+                <div class="image-wrapper">
+                    <div class="img-box">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="poi-info">
+                    <div class="poi-name">黄焖鸡米饭</div>
+                    <div class="price-wrapper">
+                        <div class="location"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="map"></div> -->
+    <script>
+        // 1.距离
+        // 2.点 经纬度114.305953,30.540879 kfc 114.338799,30.543516
+        const myLatittude = '30.540879',
+        mylongitude = '114.305953',
+        kfcLatitude = '30.543516',
+        kfcLongitude = '114.338799' ;
+// sdk有点大 js中的事件机制
+        window.onload = function() {
+            function parseDistance(distance) {
+                // 如>1km 返回 4.1km
+                // 否则 整数
+                if (distance < 1000) {
+                    return parseInt(distance);
+                } else{
+                    return (distance/1000).toFixed(1);
+                }
+            }
+
+// 开始js编程
+// 实例化地图
+            const map = new BMap.Map('map');
+            // const myPoint = 
+            // map.centerAndZoom("湖北省人民医院",17)
+
+            // 两点距离
+            const myPoint = new BMap.Point(mylongitude,myLatittude);
+            const kfcPoint = new BMap.Point(kfcLongitude,myLatittude);
+            const distance = parseDistance(
+            map.getDistance(myPoint,kfcPoint)
+            );
+            console.log(distance);
+            document.querySelector('.poi-name').innerHTML = '肯德基';
+            document.querySelector('.location').innerHTML = distance;
+            document.querySelector('.img-box img').src = "https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q"
+        }
+
+    </script>
+</body>
+</html>
