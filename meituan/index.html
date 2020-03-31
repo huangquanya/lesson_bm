@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" 
   content="initial-scale=0.5,maximum-scale=0.5, minimum-scale=0.5,width=device-width, height=device-height, user-scalable=no">
+    
     <title>Document</title>
     <!-- sdk -->
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=QdIv2usL18zQUjo3FbjAWRfUegMaOVrw"></script>
-    <style>
+    <style type="text/css">
+
+    </style>
+    <style >
         * {
             margin: 0;
             padding: 0;
         }
+        
         body{
             /* css继承 */
             font-size: 0.28rem;
@@ -52,6 +57,11 @@
             white-space: nowrap;
             height: 2rem;
         }
+        .poi-item-wrapper .poi-info i{
+            display: inline-block;
+            width: 0.18rem;
+            height: 0.18rem;
+        }
         .poi-item-wrapper .poi-info .location {
             position: absolute;
             top: 0;
@@ -81,6 +91,23 @@
                     <div class="poi-name">黄焖鸡米饭</div>
                     <div class="price-wrapper">
                         <div class="location"></div>
+                        <div>
+                            <i><img src="img/star1.png" alt=""></i>
+                            <i><img src="img/star1.png" alt=""></i>
+                            <i><img src="img/star1.png" alt=""></i>
+                            <i><img src="img/star1.png" alt=""></i>
+                            <i><img src="img/star0.png" alt=""></i><br>
+                            <em class="price">49元/人</em>
+                        </div>
+                        <div>
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-xxx"></use>
+                            </svg>
+                        </div><div>
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-xxx"></use>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,9 +127,9 @@
                 // 如>1km 返回 4.1km
                 // 否则 整数
                 if (distance < 1000) {
-                    return parseInt(distance);
+                    return (parseInt(distance)+'m');
                 } else{
-                    return (distance/1000).toFixed(1);
+                    return ((distance/1000).toFixed(1)+'km');
                 }
             }
 
