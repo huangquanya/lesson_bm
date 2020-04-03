@@ -8,79 +8,15 @@
     <title>Document</title>
     <!-- sdk -->
     <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=QdIv2usL18zQUjo3FbjAWRfUegMaOVrw"></script>
-    <style type="text/css">
 
-    </style>
-    <style >
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        
-        body{
-            /* css继承 */
-            font-size: 0.28rem;
-            line-height: 1.5;
-        }
-        img {
-            max-width: 100%;
-        }
-        #map {
-            width: 100vw;
-            height: 100vh;
-        }
-        .poi-item-wrapper{
-            background-color: #fff;
-            padding: 0.24rem 0 0 0.3rem;
-            border-bottom: 1px solid #e5e5e5;
-        }
-        .poi-item-wrapper .poi-info-wrapper {
-            display: flex;
-        }
-        .poi-item-wrapper .image-wrapper{
-            position: relative;
-            margin-top: 0.05rem;
-            width: 1.6rem;
-            height: 1.61rem;
-        }
-        .poi-info-wrapper .poi-info {
-            margin-left: 0.18rem;
-            flex: 1;
-        }
-        .poi-item-wrapper .poi-info .price-wrapper {
-            position: relative;
-            font-size: 0.24rem;
-            line-height: 0.33rem;
-            margin-top: 0.06rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            height: 2rem;
-        }
-        .poi-item-wrapper .poi-info i{
-            display: inline-block;
-            width: 0.18rem;
-            height: 0.18rem;
-        }
-        .poi-item-wrapper .poi-info .location {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 0.33rem;
-            line-height: 0.33rem;
-            font-size: 0.24rem;
-            font-family: PingFangSC-Regular;
-            color: #666666;
-            letter-spacing: 0.2px;
-        }
-    </style>
+   <link rel="stylesheet" href="index.css">
 
 </head>
 <body>
     <!-- html+css -->
     <!-- 附近商家 -->
     <div class="shoplist">
-        <div class="poi-item-wrapper">
+        <!-- <div class="poi-item-wrapper">
             <div class="poi-info-wrapper">
                 <div class="image-wrapper">
                     <div class="img-box">
@@ -92,37 +28,149 @@
                     <div class="price-wrapper">
                         <div class="location"></div>
                         <div>
-                            <i><img src="img/star1.png" alt=""></i>
-                            <i><img src="img/star1.png" alt=""></i>
-                            <i><img src="img/star1.png" alt=""></i>
-                            <i><img src="img/star1.png" alt=""></i>
-                            <i><img src="img/star0.png" alt=""></i><br>
-                            <em class="price">49元/人</em>
+                            <i class="iconfont">&#xe601;</i>
+                            <i class="iconfont">&#xe601;</i>
+                            <i class="iconfont">&#xe601;</i>
+                            <i class="iconfont">&#xe601;</i>
+                            <i class="grey iconfont">&#xe603;</i>
+                            <span class="price">49元/人</span>
                         </div>
-                        <div>
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-xxx"></use>
-                            </svg>
-                        </div><div>
-                            <svg class="icon" aria-hidden="true">
-                                <use xlink:href="#icon-xxx"></use>
-                            </svg>
+                        <div class="cate-wrapper">
+                            <span class="cateName">汉堡炸鸡</span>
+                            <span class="cateLable">周边排行第二</span>
                         </div>
+                        <div class="servicLabel">
+                            <span class="service">支持到店自取/外卖</span>
+                        </div>    
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <!-- <div id="map"></div> -->
     <script>
         // 1.距离
         // 2.点 经纬度114.305953,30.540879 kfc 114.338799,30.543516
         const myLatittude = '30.540879',
-        mylongitude = '114.305953',
-        kfcLatitude = '30.543516',
-        kfcLongitude = '114.338799' ;
+        mylongitude = '114.305953';
+        
+        //坐标 店名 评分  分类｛｝json object 对象字面量
+        const shops = [
+            {
+                name: '肯德基XX店',
+                pos: ['114.338799','30.543516'],
+                logo: 'https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q',
+                price: '45元/人',
+                cate: '汉堡炸鸡'
+            },
+            {
+                name: 'pizzaXX店',
+                pos: ['114.311005','30.541062'],
+                logo:'https://p0.meituan.net/bbia/182449345_1585294684250.jpeg@275w_156h_1e_1c',
+                price: '99元/人',
+                cate: '披萨'
+            },
+            {
+                name: '面条XX店',
+                pos: ['114.311029','30.541238'],
+                logo: 'https://p0.meituan.net/merchantpic/1f9f62f6114555b361869952a0907e94141541.jpg@275w_156h_1e_1c',
+                price: '95元/人',
+                cate: '面食'
+            },
+            {
+                name: '纸盒咖啡',
+                pos: ['114.311187','30.540566'],
+                price: '40元/人',
+                cate: '咖啡'
+            },
+            {
+                name: '星巴克',
+                pos: ['114.310854','30.540243'],
+                logo: 'https://p0.meituan.net/merchantpic/1f9f62f6114555b361869952a0907e94141541.jpg@275w_156h_1e_1c',
+                price: '66元/人',
+                cate: '咖啡'
+            },
+            {
+                name: '欢乐空间KTV',
+                pos: ['114.311018','30.540506'],
+                logo: 'https://p0.meituan.net/msmerchant/1e96885ff375e86ec286f620c86586cd3707706.jpg@275w_156h_1e_1c',
+                price: '55元/人',
+                cate: 'ktv'
+            },
+            {
+                name: '天然调味U你',
+                pos: ['114.310833','30.540285'],
+                logo: 'https://p1.meituan.net/msmerchant/692a8df121fc53d7c3ce6d66e2852007406177.jpg@275w_156h_1e_1c',
+                price: '115元/人',
+                cate: '米饭'
+            },
+            {
+                name: '盒马鲜生',
+                pos: ['114.31096','30.541882'],
+                logo: 'https://p0.meituan.net/msmerchant/5f7f3d98b320dc546d17d7804fca38e036097.jpg@275w_156h_1e_1c',
+                price: '85元/人',
+                cate: '生鲜水产'
+            },
+            {
+                name: '拾味馆',
+                pos: ['114.311144','30.541387'],
+                logo: 'https://p0.meituan.net/bbia/5554c713586c64be8bd64715f056df4f941780.jpg@275w_156h_1e_1c',
+                price: '88元/人',
+                cate: '骨汤'
+            },{
+                name: '一点点',
+                pos: ['114.310862','30.54091'],
+                logo: 'https://p1.meituan.net/msmerchant/e7460b555865b0c5a10b0fba23822495326670.png@275w_156h_1e_1c',
+                price: '65元/人',
+                cate: '奶茶'
+            }
+        ];
 // sdk有点大 js中的事件机制
         window.onload = function() {
+            const map = new BMap.Map('map');
+            const myPoint = new BMap.Point(mylongitude,myLatittude);
+            const shopContainer = document.querySelector('.shoplist');
+            for(let i = 0; i < shops.length; i++){
+                let shopPoint = new BMap.Point(shops[i].pos[0],
+                shops[i].pos[1]);
+                let distance = parseDistance(
+                    map.getDistance(myPoint,shopPoint)
+                );
+                shopContainer.innerHTML +=`
+                <div class="poi-item-wrapper">
+                    <div class="poi-info-wrapper">
+                        <div class="image-wrapper">
+                            <div class="img-box">
+                                <img src="${shops[i].logo}" alt="">
+                            </div>
+                        </div>
+                        <div class="poi-info">
+                            <div class="poi-name">${shops[i].name}</div>
+                            <div class="price-wrapper">
+                                <div class="location">${distance}</div>
+                                <div>
+                                    <i class="iconfont">&#xe601;</i>
+                                    <i class="iconfont">&#xe601;</i>
+                                    <i class="iconfont">&#xe601;</i>
+                                    <i class="iconfont">&#xe601;</i>
+                                    <i class="grey iconfont">&#xe603;</i>
+                                    <span class="price">${shops[i].price}</span>
+                                </div>
+                                <div class="cate-wrapper">
+                                    <span class="cateName">${shops[i].cate}</span>
+                                    <span class="cateLable">周边排行第二</span>
+                                </div>
+                                <div class="servicLabel">
+                                    <span class="service">支持到店自取/外卖</span>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                `
+
+            }
             function parseDistance(distance) {
                 // 如>1km 返回 4.1km
                 // 否则 整数
@@ -135,20 +183,20 @@
 
 // 开始js编程
 // 实例化地图
-            const map = new BMap.Map('map');
+           
             // const myPoint = 
             // map.centerAndZoom("湖北省人民医院",17)
 
             // 两点距离
-            const myPoint = new BMap.Point(mylongitude,myLatittude);
-            const kfcPoint = new BMap.Point(kfcLongitude,myLatittude);
-            const distance = parseDistance(
-            map.getDistance(myPoint,kfcPoint)
-            );
-            console.log(distance);
-            document.querySelector('.poi-name').innerHTML = '肯德基';
-            document.querySelector('.location').innerHTML = distance;
-            document.querySelector('.img-box img').src = "https://p0.meituan.net/200.0/deal/607cffdccca7f4da09a2dddeedd31a8e49072.jpg@126_0_388_388a%7C267h_267w_2e_100Q"
+           
+            // const kfcPoint = new BMap.Point(kfcLongitude,myLatittude);
+            // const distance = parseDistance(
+            // map.getDistance(myPoint,kfcPoint)
+            // );
+            // console.log(distance);
+            // document.querySelector('.poi-name').innerHTML = '肯德基';
+            // document.querySelector('.location').innerHTML = distance;
+            // document.querySelector('.img-box img').src = ""
         }
 
     </script>

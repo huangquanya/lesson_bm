@@ -1,0 +1,100 @@
+@font-face {
+    font-family: 'iconfont';  /* project id 1727368 */
+    src: url('//at.alicdn.com/t/font_1727368_c5wlrbtc62d.eot');
+    src: url('//at.alicdn.com/t/font_1727368_c5wlrbtc62d.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1727368_c5wlrbtc62d.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1727368_c5wlrbtc62d.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1727368_c5wlrbtc62d.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1727368_c5wlrbtc62d.svg#iconfont') format('svg');
+  }
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* css继承 */
+    font-size: 0.28rem;
+    line-height: 1.5;
+}
+img {
+    max-width: 100%;
+}
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+.poi-item-wrapper{
+    background-color: #fff;
+    padding: 0.24rem 0 0 0.3rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+.poi-item-wrapper .poi-info-wrapper {
+    display: flex;
+}
+.poi-item-wrapper .image-wrapper{
+    position: relative;
+    margin-top: 0.05rem;
+    width: 1.6rem;
+    height: 1.61rem;
+}
+.poi-info-wrapper .poi-info {
+    margin-left: 0.18rem;
+    flex: 1;
+}
+.poi-item-wrapper .poi-info .price-wrapper {
+    position: relative;
+    font-size: 0.24rem;
+    line-height: 0.33rem;
+    margin-top: 0.06rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 2rem;
+}
+.poi-item-wrapper .poi-info i {
+    display: inline-block;
+    width: 0.18rem;
+    height: 0.18rem;
+    color: #fa952f;
+}
+.poi-item-wrapper .poi-info .grey {
+    color: #535353;
+}
+.poi-item-wrapper .poi-info .price {
+    color: #666666;
+}
+.poi-item-wrapper .poi-info .cate-wrapper {
+    margin-top: 0.06rem;
+    font-size: 0.24rem;
+    line-height: 0.33rem;
+    letter-spacing: 0.2;    
+}
+.poi-info .cate-wrapper .cateName {
+    color: #666666;
+}
+.poi-info .cate-wrapper .cateLable {
+    color: rgb(190, 158, 77);
+    background-color: rgb(251, 244, 228);
+}
+.poi-info .servicLabel .service {
+    color: rgb(108, 186, 178);
+}
+.poi-item-wrapper .poi-info .location {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 0.33rem;
+    line-height: 0.33rem;
+    font-size: 0.24rem;
+    font-family: PingFangSC-Regular;
+    color: #666666;
+    letter-spacing: 0.2px;
+}
