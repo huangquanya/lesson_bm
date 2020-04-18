@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member</title>
+    <link rel="stylesheet" href="./common.css">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 挂载点 DOM -->
+    <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <form class="submit">
+              <div class="form-group">
+                <label for="idInput">ID</label>
+                <input type="number" class="form-control" id="idInput" placeholder="请输入ID " value="" required>
+              </div>
+              <div class="form-group">
+                <label for="nameInput">name</label>
+                <input type="text" class="form-control" id="nameInput" placeholder="请输入名字" value="" required>
+              </div>
+              <div class="form-group">
+                <label for="avatarInput">Avatar input</label>
+                <input type="text" class="form-control" id="avatarInput" placeholder="请输入头像地址" value="" required>
+              </div>
+              <div class="form-group">
+                <label for="telInput">tel input</label>
+                <input type="tel" class="form-control" id="telInput" placeholder="请输入电话号码" value="" required>
+              </div>
+              <div class="form-group">
+                <label for="hometownInput">hometown input</label>
+                <input type="text" class="form-control" id="hometownInput" placeholder="请输入家庭地址" value="" required>
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+          </div>
+        
+       
+          <div class="col-md-8">
+              <table id="member" class="table table-striped">
+                  <!-- html语义化 -->
+                  <thead>
+                      <tr>
+                          <th>Avatar</th>
+                          <th>Id</th>
+                          <th>Name</th>
+                          <th>Tel</th>
+                          <th>Hometown</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <!-- 动态的插入 -->
+                  </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+
+<script src="index.js"></script>
+</body>
+</html>
