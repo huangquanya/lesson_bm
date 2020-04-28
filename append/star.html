@@ -25,6 +25,7 @@
         class LikeButton {
             constructor() {
                 this.state = { isLiked: false}
+                this.render();
             }
             render() {
                 // 事件监听???
@@ -37,10 +38,13 @@
                 `
             }
             weClick(){
+                oLi.addEventListener('click', (event) => {
                 this.state.isLiked? this.state.isLiked = false:this.state.isLiked = true;
                 oLi.innerHTML = this.render();
                 console.log(this);
                 console.log(this.state.isLiked);
+        });
+                
             }
         }
         const wrapper = document.querySelector('.wrapper');
@@ -49,9 +53,7 @@
         // wrapper.appendChild(document.createElement('li')).innerHTML = likeButton.render(1);
         const oLi = document.createElement('li');
         wrapper.appendChild(oLi).innerHTML = likeButton.render();
-        oLi.addEventListener('click', (event) => {
-            likeButton.weClick();
-        });
+        likeButton.weClick();
         // wrapper.innerHTML = likeButton.render(1);
         // 流程性代码，点赞通用组件 不方便复用 封装
         // const likeButton2 = new LikeButton();
