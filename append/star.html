@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 状态问题  一段语义化html表达 -->
+    <div class="wrapper">
+        <!-- <button class="like-btn">
+            <span class="like-text">点赞</span> -->
+        </button>
+        
+    </div>
+    <script>
+        // const button = document.querySelector('.like-btn');
+        // const buttonText = document.querySelector('.like-text')
+        // let isLiked = false; // 
+        // button.addEventListener('click', () => {
+        //     isLiked = !isLiked;
+        //     isLiked ? buttonText.innerHTML = '取消' : buttonText.innerHTML = '点赞'
+        // }, false)
+        // 封装
+        class LikeButton {
+            constructor() {
+                this.state = { isLiked: false}
+            }
+            render() {
+                // 事件监听???
+                // addEventListener?
+                console.log(this.state.isLiked);
+                return `
+                <button id='like-btn'>
+                    <span class='like-text'>${this.state.isLiked ? '取消' : '点赞'}</span>
+                </button>
+                `
+            }
+            weClick(){
+                this.state.isLiked? this.state.isLiked = false:this.state.isLiked = true;
+                oLi.innerHTML = this.render();
+                console.log(this);
+                console.log(this.state.isLiked);
+            }
+        }
+        const wrapper = document.querySelector('.wrapper');
+
+        const likeButton = new LikeButton();
+        // wrapper.appendChild(document.createElement('li')).innerHTML = likeButton.render(1);
+        const oLi = document.createElement('li');
+        wrapper.appendChild(oLi).innerHTML = likeButton.render();
+        oLi.addEventListener('click', (event) => {
+            likeButton.weClick();
+        });
+        // wrapper.innerHTML = likeButton.render(1);
+        // 流程性代码，点赞通用组件 不方便复用 封装
+        // const likeButton2 = new LikeButton();
+        // wrapper.innerHTML += likeButton2.render(2);
+    </script>
+</body>
+</html>
