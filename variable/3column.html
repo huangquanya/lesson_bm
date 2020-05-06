@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .wrap {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header,footer {
+            /* flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto */
+            flex: 0 0 50px;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+            
+        }
+        main {
+            flex: 1;
+            
+        }
+        nav, aside {
+            flex: 0 0 100px;
+            background-color: green;
+        }
+        nav{
+            /* 如何去到左侧 */
+            order: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 三栏布局  面试常考  双飞翼和圣杯传统操作，兼容性最好-->
+   <div class="wrap">
+    <header>header</header>
+    <div class="content">
+        <main class="main"> main</main>
+        <nav class="nav">nav</nav>
+        <aside class="aside">aside</aside>
+    </div>
+    
+    <footer>footer</footer>
+   </div>
+</body>
+</html>

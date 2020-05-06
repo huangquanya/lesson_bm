@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* css 4 引入了variable */
+        /* 360喜欢面底层，以及最新的技术点，  并能深入试验 */
+:root {
+    /*根上 */
+    /* 值可以复用 */
+    --bgcolor: blue;
+    --color: red;
+}
+p {
+    /* var 使用变量 */
+    color: var(--color);
+}
+div {
+    background-color: var(--bgcolor);
+    color: var(--color);
+}
+    </style>
+</head>
+<body>
+    <p>有没有看node.js</p>
+    <div>挺好的</div>
+</body>
+</html>
