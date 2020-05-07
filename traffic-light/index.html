@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* dom: Element */
+        li {
+            width: 100px;
+            height: 100px;
+            background-color: #666;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+        ul.stop li:nth-child(1) {
+            background-color: red;
+        }
+        ul.warn li:nth-child(2) {
+            background-color: yellow;
+        }
+        ul.pass li:nth-child(3) {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        const ul = document.querySelector('ul');
+        
+        // setTimeout(
+        //     () => {
+        //     ul.className = 'stop';
+        //     setTimeout(
+        //         () => {
+        //         ul.className = 'warn';
+        //         setTimeout(
+        //             () => {
+        //             ul.className = 'pass';
+        //             setTimeout(
+        //                 () => {
+        //                 ul.className = 'warn';
+        //                 setTimeout(
+        //                     () => {
+        //                     ul.className = 'stop';
+        //                 }, 3000)
+        //             }, 3000)
+        //         }, 3000)
+        //     }, 3000)
+        // }, 3000)
+        
+
+        let p = function() {
+            return new Promise(function(resolve,reject) {setTimeout(() => {
+                resolve();
+                // 成功 fulfilled
+                // 失败rejected
+                // 处理中 pending
+                // 1.默认 pending-》 如果fulfilled 调用
+                // 2.默认 pending-》 如果rejected 调用
+            }, 1000)
+        })
+        }
+        
+        setInterval(() => {
+            light()
+        }, 3000);
+        light();
+        // fulfilled
+        function light(){
+            p().then(function() {
+            // 1th light 
+            ul.className = 'stop'
+            // 2th light
+            // 涉及promise then用法 那么还可以在后面链式调用then 也会等待着这个promise，看结果是成功还是失败
+            return p();
+        })
+        .then(
+            function() {
+            // 1th light 
+            ul.className = 'warn';
+            return p();
+        })
+        .then(function() {
+            // 1th light 
+            ul.className = 'pass';
+        })
+        }
+        
+        
+        // rejected
+        // p().catch()
+    </script>
+</body>
+</html>
