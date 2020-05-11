@@ -43,3 +43,30 @@ HTTP  TCP/IP  UDP  WebSocket
     - 服务器接收到请求信息后， 读取对应的HTML文件， 并将数据以ASC 返回给用户浏览器
     - 断开连接
 
+- http  res+req可以完成一次请求？
+HTTP协议 基于请求应答模型 1991年  传输是最简单的html文本
+ctx.req ctx.res 
+a href  req  url  res  
+a href
+背后的程序在做什么
+- req和res 之间是什么关系？
+    n:1 res想象成一个服务器 req是请求对象，有很多个   HTTP有何关系
+    n 非常大 会高并发，卡   node 很优秀 ，天生适合高并发（异步）
+    createServer  I/O file  数据库
+    php（同步 阻塞） pyhon
+    GO   多核计算
+
+    http 网络通信协议 TCP/IP  7层
+    流动 node流
+    建立一个通信管道（传输控制协议），stream
+    GET / 请求行
+    返回请求后 关闭 断开连接，  HTTP 可以服务于更多的用户
+    释放服务器的内存
+
+    带宽 100mb/s
+    req res 请求对象  响应对象
+- writeHead 在做什么事情？
+
+head 在HTTP 是什么
+
+img图片不能显示怎么办
