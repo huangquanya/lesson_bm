@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <button type="button" onclick="clickCounter()">点我</button>
+        <div id="result"></div>
+    </p>
+    <script>
+        // 刷新后， js运行，  解决方案  html5  存储  cookie
+        // localStorage  sessionStorage 可以
+        // 三者区别
+        // 刻意练习
+        // let count = 0;
+        // let result = document.getElementById('result')
+        // function clickCounter(){
+        // count++;
+        // result.innerHTML = count;//优化？
+        // }
+        // Storage 将点击次数保存到本地  storage刻意练习
+        // cookie是短暂保存在客户端 浏览器存储的文本，  http每次都带，
+        // session是短暂保存在服务器端，
+        // locaStorage是永久保存在本地
+        // 存储的东西不一定是存储，  js css png 浏览器作为文件存储
+        // 
+
+        function clickCounter() {
+            if(typeof Storage !== "undefined"){ 
+                //作用  浏览器支持本地storage 浏览器嗅探
+                if(sessionStorage.clickCounter) {
+                    sessionStorage.clickCounter = Number(sessionStorage.clickCounter)+1;
+                }else {
+                    sessionStorage.clickCounter = 1
+            }
+                result.innerHTML = `你在按钮上已经点击了${sessionStorage.clickCounter}次`
+            }  else {
+                result.innerHTML = "Sorry, 浏览器不支持"
+            }
+        }
+    </script>
+</body>
+</html>
