@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="search">
+    <input type="text" id="search1">
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+    <script>
+        
+        let timeout ;
+        const search = document.getElementById('search');
+        function handlesearch(event) {
+            if(timeout){
+                clearTimeout(timeout)
+            }
+            timeout = setTimeout(() => {
+                console.log(event.target.value)
+            }, 1000)
+            // 重新计时
+            // console.log(event.target.value)
+            // jay 这个词 j ja jay三次请求
+            // 等用户输入完 再去进行请求
+            //  用户连续输入就会连续触发input 处于输入中 没必要请求
+            // 输完后 input 没触发了等 100ms之后 用户不再触发 input输完了 之后请求
+            // 等100ms
+            // fetch axios xhr
+            // 
+        }
+        // setTimeout
+        // onChange
+        search.addEventListener('input', handlesearch)
+        // 电梯
+        // 1进去1min 关起来
+        let timeout1 ;
+        let handlemousemove = function() {
+            // if(timeout1){
+            //     clearTimeout(timeout1)
+            // }
+            // timeout1 = setTimeout(() => {
+                console.log(this);
+                console.log('hadlemousemove')
+            // },1000)
+            
+        }
+        let hasDebounceMove = _.debounce(handlemousemove,500);
+        window.addEventListener('mousemove', hasDebounceMove)
+
+        // 箭头函数 this：写这个函数的时候就确定了，
+        // 普通函数 this： 调用的时候决定了this
+        const search1 = document.getElementById('search1');
+        search1.addEventListener('input', debounce(function(e){
+            console.log(this);
+            console.log(e.target.value);
+        }, 600))
+
+        // 防抖：
+        // 1: let timeout
+        // 2: if(timeout)clear
+        // 3: timeout = setTimeout
+        // debounce之内
+        // func没有防抖功能
+        function debounce(func, wait) {
+            let timeout;
+            return function(event){
+                if(timeout) {
+                    clearTimeout(timeout);
+                }
+                timeout = setTimeout(() =>{
+                    // 调用要实现的功能
+                    // 在这里调用的
+                    // this默认指向window
+                    // bind不会调用函数
+                    func.call(this,event);
+                    // func(event);
+                }, wait)
+            }
+        }
+    </script>
+</body>
+</html>
