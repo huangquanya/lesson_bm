@@ -1,0 +1,37 @@
+<style>
+    #container {
+      width: 700px;
+    }
+    .cell {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: gray;
+      border-right: 1px solid white;
+      border-bottom: 1px solid white;
+      vertical-align: middle;
+    }
+  </style>
+  <div id="container"></div>
+  <script>
+    const container = document.getElementById('container')
+    let arr = new Array(10000).fill(0);
+    arr.forEach(() => {
+      const cell = document.createElement('div');
+      cell.classList.add('cell');
+      container.appendChild(cell);
+      cell.addEventListener('mousemove', () => {
+          if (mouse) {
+              cell.style.backgroundColor = 'black';
+          }
+      })
+    })
+    let mouse = false;
+    document.addEventListener('mousedown', () => {
+        mouse = true;
+        
+    })
+    document.addEventListener('mouseup', () => {
+        mouse = false;
+    })
+  </script>
