@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <li>1</li>
+        <span>2</span>
+        <p>3</p>
+    </div>
+    <script>
+        const childs = document.querySelector('div');
+        const eles = childs.childNodes;
+        console.log(eles)
+        for(let len = eles.length-1;len>=0; len--){
+            childs.appendChild(eles[len])
+        }
+        // 同一个dom节点，只能有一个父节点， （同一个dom节点不能属于两个父节点）
+    </script>
+</body>
+</html>
