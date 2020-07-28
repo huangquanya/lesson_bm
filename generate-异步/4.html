@@ -1,0 +1,40 @@
+<!-- repeat 实现，使用JS实现一个repeat方法，调用这个 repeatedFunc("hellworld")，会alert4次 helloworld, 每次间隔3秒
+
+function repeat(func, times, wait) {
+}
+const repeatFunc = repeat(alert, 4, 3000) -->
+
+<!-- 
+    // function repeat(func, times, wait) {
+        let count = 0;
+        let a =()=>{ 
+            return new Promise((resolve)=>{
+            setTimeout(()=>{
+                func('hellworld')
+                resolve()
+            },3000)
+        })
+    }
+        while(count <4){
+            const b = async ()=>{
+                const v = await a()
+                count++;
+            }
+        }
+}
+const repeatFunc = repeat(alert, 4, 3000) -->
+
+<!-- 高阶函数 -->
+<script>
+function repeat(func, times, wait) {
+    return (arg)=>{
+        for(let i = 0; i<times; i++){
+            setTimeout(()=>{
+                func(arg)
+            }, i*wait)
+        }
+    }
+}
+const repeatFunc = repeat(console.log, 4, 3000)
+repeatFunc("hello world");
+</script>

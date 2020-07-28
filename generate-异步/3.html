@@ -1,0 +1,52 @@
+<script>
+    // sleep() 休眠
+    console.log(1)
+    sleep1(3000)
+    // console.log(2)
+    // (async ()=>{
+    //     let a = await sleep2(3000);
+    // })();
+    // console.log(4)
+
+    function sleep1(time){
+        let pre = Date.now()
+        while(Date.now()-pre<time){}
+    }
+    function sleep2(time){
+        return new Promise(
+            (resolve)=>{
+            setTimeout(
+                ()=>{resolve()}
+                ,time);
+        })
+    }
+
+    function * foo(){
+        const a = yield sleep2(2000)
+        console.log(a)
+        const b = yield sleep2(1000)
+        console.log(b)
+    }
+    // next(值) 值当做yield 返回值
+    // 如果a 要为promise的 resolve返回值
+    // 要把promise的resolve的值写到next里面去
+    // promise.then(res=>next(res))
+    // 怎么拿到 promise value
+
+    // TJ
+    // koa ;
+    //  co的原理为以下几行代码
+    function autoRun(obj,pre){
+        // 当前这一块
+        let {done,value}=obj.next(pre);
+        if(done)return;
+        // 下一块
+        value.then((res)=>{
+            autoRun(obj,res);
+        })
+        // autoRun(obj)
+    }
+
+    let iterator = foo();
+    autoRun(iterator)
+</script>

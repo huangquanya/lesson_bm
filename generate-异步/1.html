@@ -1,0 +1,28 @@
+<script>
+    // async await
+    // 协（纤）程：意为比进程、线程更小的单位
+
+    // 可以被终止，可以被打断
+    function * foo(){
+        let a = yield 1  //yield 1 返回值不是1，如果需要返回值，把返回值传到next里
+        console.log(1,a)
+        let b = yield 2
+        console.log(2,b)
+        let c = yield 3
+        console.log(3,c)
+    }
+    console.log(foo())
+    let iterator = foo();
+    console.log(iterator.next())
+    // iterator.next();
+    // console.log(iterator.next());
+    // console.log(iterator.next());
+    // console.log(iterator.next());
+
+    function autoRun(iteratorObj){
+        let {done} = iteratorObj.next(8);
+        if(done)return 
+        autoRun(iteratorObj)
+    }
+    autoRun(iterator);
+</script>
