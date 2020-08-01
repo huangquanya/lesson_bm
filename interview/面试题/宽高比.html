@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 宽高比： 16：9 */
+        .ration{
+            position: relative;
+            width: 100%;
+            height: 0;
+            outline: 1px solid red;
+            /* 用padding撑开高度 padding-top基于高度计算 */
+            padding-top: calc(100% * 9 / 16);
+        }
+        .ration > div {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%,50%);
+            vertical-align: middle;
+            text-align: center;
+            line-height: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="ration">
+        <div>AAAAAAAAAAAAAA</div>
+    </div>
+    <script>
+        let obj = {
+            a:1,
+            toString(){//优先级最低
+                return 1
+            },
+            valueOf(){//优先级第二
+                return 2
+            },
+            [Symbol.toPrimitive]:()=>{//优先级最高
+                return 123
+            },
+        };
+
+        console.log(obj+1)
+
+
+        Object.prototype.toString()
+        let arr = [1,2]
+        arr.toString()//array重写的语法
+
+        // js 里number的所有的写法 2进制 1111 8进制 0b10 010 16进制 0X aa 10进制1234  123e-1 123e+10
+    </script>
+</body>
+</html>

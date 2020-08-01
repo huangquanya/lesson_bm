@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JS: ECMA() DOM(html树) BOM(浏览器相关的api)
+        // JSON: XML yaml
+        // function ajax({  url: string,  method: string,  data?: object,  timeout?: number}): promise;
+        function ajax({  url,  method,  data,  timeout}){
+            // 原生js XMLHttpRequest
+            return new Promise((resolve,reject)=>{
+                const xhr = new XMLHttpRequest()
+                xhr.timeout = timeout;
+                xhr.responseType = 'json'
+                xhr.open(method,url,true)
+                xhr.timeout = function(){
+                    reject('request timeout')
+                }
+                // readyState:0 1 2 3 4
+                // 0	UNSENT	代理被创建，但尚未调用 open() 方法。
+                // 1	OPENED	open() 方法已经被调用。
+                // 2	HEADERS_RECEIVED	send() 方法已经被调用，并且头部和状态已经可获得。
+                // 3	LOADING	下载中； responseText 属性已经包含部分数据。
+                // 4	DONE	下载操作已完成。
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState===4){
+                        if((xhr.status>=200 &&xhr.status < 300)|| xhr.status===304){
+                            resolve(xhr.response)
+                        }else {
+                            reject('response error')
+                        }
+                    }
+                }
+                // xhr.onload
+                // 数据？？
+                // GET数据拼接到url
+                // Post要看Content-type：
+                // content-type有哪些，每个类型对数据的要求格式是怎么样的
+                // content-type: application/json 需要符合json（key-value） {a:1,b:2}
+                // content-type: application/x-www-form-url-encoded  a=1&b=2
+                // content-type: text/plain  字符串 a=1,b=2
+                // content-type: form-data 文件(大量的非ASCII字符)
+                // 
+                xhr.send()
+            })
+        }
+        ajax({
+            url:"http://neteasecloudmusicapi.zhaoboy.com/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA",
+            method:'GET',
+            timeout:5000
+        })
+        .then(console.log)
+        .catch()
+    </script>
+</body>
+</html>
