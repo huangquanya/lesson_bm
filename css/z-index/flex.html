@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex {
+          display: flex;
+          height: 100vh;
+          flex-wrap: wrap;
+          align-items:center;
+          align-content: space-evenly;
+          /* stretch 平分*/
+          /* center  中间*/
+          /* space-evenly 均分 space-around每个元素两边距离相等(元素之间为两个元素间隔相加) */
+        }
+        .item1 {
+          width: 120px;
+          height: 60px;
+          background-color: aqua;
+        }
+        .item2 {
+          width: 140px;
+          height: 160px;
+          background-color: red;
+          padding-top: 30px;
+        }
+        .item3 {
+          width: 140px;
+          height: 20px;
+          background-color: green;
+          /* align-self: flex-end; */
+          order: 1;
+          /* 属性定义项目的排列顺序。数值越小，排列越靠前，默认为0 */
+
+          /* 
+          双飞翼 圣杯
+          left 固定 main 自适应 right 固定
+          html结构：让main在前面
+          div main
+          div left
+          div right
+           */
+        }
+      </style>
+</head>
+<body>
+
+      <div class="flex">
+        <div class="item1">
+          English
+        </div>
+        <div class="item1">
+          English
+        </div>
+        <div class="item3">
+          English
+        </div>
+        <div class="item1">
+          English
+        </div>
+        <div class="item1">
+          English
+        </div>
+        <div class="item2">
+          English
+          <br />
+          English
+          <br />
+        </div>
+      </div>
+      
+</body>
+</html>
