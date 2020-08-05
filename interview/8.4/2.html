@@ -1,0 +1,33 @@
+
+<script>
+    const dateFormat = (dateInput, format)=>{
+  // todo
+  let count = 0;
+  let arr = []
+  arr.push(dateInput.getFullYear());
+  arr.push(dateInput.getMonth()+1);
+  arr.push(dateInput.getDate());
+  console.log(arr)
+  let form = format.replace(/(yyyy)(MM)(dd)/,(...args)=>{
+    console.log(args)
+    let a = arr[count]
+    count++;
+    console.log(a)
+    return a
+  })
+}
+// const dateFormat = (dateInput, format) => {
+//             // todo
+//             let y = dateInput.getFullYear();
+//             let m = dateInput.getMonth() + 1;
+//             let d = dateInput.getDate();
+//             return format
+//                 .replace(/(y|Y){4}/, y)
+//                 .replace(/(m|M){2}/, m >= 10 ? m : "0" + m)
+//                 .replace(/(d|D){2}/, d >= 10 ? d : "0" + d)
+//         }
+
+console.log(dateFormat(new Date('2020-12-01'), 'yyyy/MM/dd')) // 2020/12/01
+dateFormat(new Date('2020-04-01'), 'yyyy/MM/dd') // 2020/04/01
+dateFormat(new Date('2020-04-01'), 'yyyy年MM月dd日') // 2020年04月01日
+</script>
