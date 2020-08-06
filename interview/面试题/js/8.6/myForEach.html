@@ -1,0 +1,8 @@
+<script>
+    // this指向调用函数的实例
+    Array.prototype.myForEach = function(fn,value){
+        for(let i=0;i <this.length;i++){
+            fn(this[i],i,this);
+        }
+    }
+</script>

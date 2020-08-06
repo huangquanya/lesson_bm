@@ -1,0 +1,40 @@
+<script>
+window.name = 'ByteDance';
+function A () {
+   console.log(this.name);//这时还没有添加name
+   this.name = 123;
+}
+A.prototype.getA = function(){
+        console.log(this);
+        return this.name + 1;
+}
+A.prototype.name = 456;
+let a = new A();    //456 
+let funcA = a.getA; // 
+console.log(funcA());  // window  ByteDance1
+console.log(new A())// 456 A{name:123}
+
+// 1. 首先会生成一个空对象｛｝，
+// 2. {}.__proto__=A.prototype
+// 3. {}添加name属性
+// 4. return {}
+function newConstructor(Constructor){
+    let obj={}; //a
+    obj.__proto__=Constructor.prototype  //__proto__的操作是获取原型
+    //给obj加上属性
+    Constructor.apply(obj) //因为apply的副作用，将Constructor的this指向obj 并且逐行执行
+    return obj
+}
+// Object.prototype.__proto__ ===null
+// 
+
+function Animal(){
+    this.name = 'cat'
+    console.log(this,this.name,this.palce,'mid')
+    this.place = 'land'
+}
+let ani = {}
+Animal.apply(ani)
+console.log(ani)
+
+</script>
