@@ -1,0 +1,26 @@
+<ul id="container"></ul>
+<script>
+    const container = document.getElementById('container')
+    let all = 100000;
+    // for(let i = 0; i<all;i++){
+    //     let li = document.createElement('li')
+    //     li.textContent=i
+    //     container.appendChild(li)
+    // }
+    let one = 20
+    function page(curTotal,once){
+        if(curTotal<=0) return;
+        // 剩下的不够二十条就取20条
+        let pageCount = Math.min(curTotal,once)
+        for(let i = 0; i<pageCount;i++){
+        let li = document.createElement('li')
+        li.textContent=Math.random()
+        container.appendChild(li)
+    }
+    //加载下一页 时间分片
+    setTimeout(() => {
+        page(curTotal-pageCount,once)
+    }, 16);  //时间分片
+}
+    page(all,one)
+</script>
